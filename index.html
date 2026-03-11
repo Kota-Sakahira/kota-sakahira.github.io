@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kota Sakahira – Apps</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink: #0f1f2e;
+      --mist: #e8f0f5;
+      --tide: #2a7fa8;
+      --foam: #f0f7fb;
+      --accent: #e8883a;
+      --line: rgba(42, 127, 168, 0.18);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--foam);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── SVG wave background ── */
+    .bg-wave {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-wave svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 48px 40px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    header h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    header span {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--tide);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 10;
+      padding: 60px 40px 32px;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tide);
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .hero h2 em {
+      font-style: normal;
+      color: var(--tide);
+    }
+
+    /* ── App grid ── */
+    .apps {
+      position: relative;
+      z-index: 10;
+      padding: 48px 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px 28px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--tide), var(--accent));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(42, 127, 168, 0.13);
+      border-color: rgba(42, 127, 168, 0.35);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: var(--foam);
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      flex: 1;
+    }
+
+    .card-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: #5a7080;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-weight: 500;
+    }
+
+    .badge-ios {
+      background: #e8f3fb;
+      color: var(--tide);
+    }
+
+    .arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--foam);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .card:hover .arrow {
+      background: var(--tide);
+      color: #fff;
+      transform: translateX(3px);
+    }
+
+    /* ── "Coming soon" placeholder card ── */
+    .card-placeholder {
+      background: transparent;
+      border: 2px dashed var(--line);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 180px;
+      color: #9ab5c5;
+    }
+
+    .card-placeholder .plus {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .card-placeholder p {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 10;
+      padding: 24px 40px;
+      font-size: 0.75rem;
+      color: #9ab5c5;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 32px 20px 0;
+      }
+
+      .hero {
+        padding: 40px 20px 20px;
+      }
+
+      .apps {
+        padding: 32px 20px 60px;
+      }
+
+      footer {
+        padding: 20px;
+      }
+    }
+
+    /* ── Entrance animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .card.visible {
+      animation: fadeUp 0.55s ease forwards;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Subtle wave background -->
+  <div class="bg-wave">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#d4eaf5" stop-opacity="0.5" />
+          <stop offset="100%" stop-color="#f0f7fb" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="200" cy="150" rx="520" ry="320" fill="url(#wg)" opacity="0.6" />
+      <ellipse cx="1300" cy="700" rx="480" ry="280" fill="url(#wg)" opacity="0.5" />
+      <path d="M0,400 C300,340 600,460 900,400 C1200,340 1350,420 1440,380 L1440,900 L0,900 Z" fill="#d4eaf5"
+        opacity="0.25" />
+      <path d="M0,550 C360,490 720,610 1080,540 C1260,505 1380,560 1440,530 L1440,900 L0,900 Z" fill="#2a7fa8"
+        opacity="0.07" />
+    </svg>
+  </div>
+
+  <header class="fade-up">
+    <h1>Kota Sakahira</h1>
+    <span>App Portfolio</span>
+  </header>
+
+  <section class="hero fade-up" style="animation-delay:0.1s">
+    <p class="hero-label">My Apps</p>
+    <h2>公開中の<br><em>アプリ一覧</em></h2>
+  </section>
+
+  <section class="apps" id="appGrid">
+
+    <!-- TsuriReco -->
+    <a class="card" href="./TsuriReco.html" aria-label="TsuriReco プライバシーポリシー">
+      <div class="card-icon">🎣</div>
+      <div class="card-body">
+        <p class="card-name">TsuriReco</p>
+        <p class="card-desc">釣りの記録・管理アプリ。釣果や釣り場の情報を手軽に記録できます。</p>
+      </div>
+      <div class="card-footer">
+        <span class="badge badge-ios">iOS</span>
+        <div class="arrow">→</div>
+      </div>
+    </a>
+
+    <!-- Placeholder for future apps -->
+    <div class="card-placeholder">
+      <span class="plus">＋</span>
+      <p>Coming Soon</p>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2025 Kota Sakahira. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Staggered card entrance
+    const cards = document.querySelectorAll('.card, .card-placeholder');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(c => observer.observe(c));
+  </script>
+</body>
+
+</html>
