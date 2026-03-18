@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -303,10 +303,59 @@
     .card.visible {
       animation: fadeUp 0.55s ease forwards;
     }
+
+    /* ── i18n toggle ── */
+    html:not(.ja) .ja-only {
+      display: none !important;
+    }
+
+    html.ja .en-only {
+      display: none !important;
+    }
+
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 4px;
+      gap: 2px;
+      box-shadow: 0 2px 12px rgba(42, 127, 168, 0.10);
+    }
+
+    .lang-switch button {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 5px 14px;
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      background: transparent;
+      color: #5a7080;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .lang-switch button.active {
+      background: var(--tide);
+      color: #fff;
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Language switcher -->
+  <div class="lang-switch">
+    <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+    <button id="btnJa" onclick="setLang('ja')">JA</button>
+  </div>
 
   <!-- Subtle wave background -->
   <div class="bg-wave">
@@ -333,17 +382,26 @@
 
   <section class="hero fade-up" style="animation-delay:0.1s">
     <p class="hero-label">My Apps</p>
-    <h2>公開中の<br><em>アプリ一覧</em></h2>
+    <h2>
+      <span class="en-only">Published<br><em>Apps</em></span>
+      <span class="ja-only">公開中の<br><em>アプリ一覧</em></span>
+    </h2>
   </section>
 
   <section class="apps" id="appGrid">
 
     <!-- TsuriReco -->
-    <a class="card" href="./TsuriReco.html" aria-label="TsuriReco プライバシーポリシー">
+    <a class="card" href="./TsuriReco.html">
       <div class="card-icon">🎣</div>
       <div class="card-body">
-        <p class="card-name">釣果記録　釣りレコ</p>
-        <p class="card-desc">釣りの記録・管理アプリ。釣果や釣り場の情報を手軽に記録できます。</p>
+        <p class="card-name">
+          <span class="en-only">Fishing Log – TsuriReco</span>
+          <span class="ja-only">釣果記録　釣りレコ</span>
+        </p>
+        <p class="card-desc">
+          <span class="en-only">A fishing log &amp; management app. Easily record your catches and fishing spots.</span>
+          <span class="ja-only">釣りの記録・管理アプリ。釣果や釣り場の情報を手軽に記録できます。</span>
+        </p>
       </div>
       <div class="card-footer">
         <span class="badge badge-ios">iOS</span>
@@ -364,6 +422,26 @@
   </footer>
 
   <script>
+    function setLang(lang) {
+      const html = document.documentElement;
+      if (lang === 'ja') {
+        html.classList.add('ja');
+        html.setAttribute('lang', 'ja');
+      } else {
+        html.classList.remove('ja');
+        html.setAttribute('lang', 'en');
+      }
+      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+      document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+      try { localStorage.setItem('lang', lang); } catch (e) { }
+    }
+    // Restore saved preference
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) { }
+      if (saved === 'ja') setLang('ja');
+    })();
+
     // Staggered card entrance
     const cards = document.querySelectorAll('.card, .card-placeholder');
     const observer = new IntersectionObserver(entries => {

@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>釣果記録　釣りレコ - プライバシーポリシー</title>
+    <title>Fishing Log TsuriReco - Privacy Policy</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
@@ -33,59 +33,198 @@
             text-decoration: none;
             font-weight: 600
         }
+
+        /* ── i18n toggle ── */
+        html:not(.ja) .ja-only {
+            display: none !important;
+        }
+
+        html.ja .en-only {
+            display: none !important;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 16px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid rgba(11, 102, 163, 0.2);
+            border-radius: 99px;
+            padding: 4px;
+            gap: 2px;
+            box-shadow: 0 2px 12px rgba(11, 102, 163, 0.10);
+        }
+
+        .lang-switch button {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 5px 14px;
+            border: none;
+            border-radius: 99px;
+            cursor: pointer;
+            background: transparent;
+            color: #555;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 0.04em;
+        }
+
+        .lang-switch button.active {
+            background: #0b66a3;
+            color: #fff;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>プライバシーポリシー</h1>
-        <p>最終更新日: 2026年3月2日</p>
-
-        <h2>1. 基本方針</h2>
-        <p>釣果記録　釣りレコ（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の適切な取り扱いに努めます。本アプリはサーバーへのユーザー登録を必要とせず、釣果データはすべてお使いの端末内にのみ保存されます。</p>
-
-        <h2>2. 取得する情報</h2>
-        <h3>■ 写真・画像</h3>
-        <p>釣果登録時に、フォトライブラリへのアクセス許可をお願いします。選択した写真は端末内にのみ保存され、外部へ送信されることはありません。</p>
-
-        <h3>■ 位置情報（EXIFメタデータ）</h3>
-        <p>写真に埋め込まれたEXIFデータから撮影場所の緯度・経度を読み取ります。なお、本アプリはGPSを常時取得するバックグラウンド位置情報取得は行いません。取得した位置情報は端末内にのみ保存され、外部へ送信されることはありません。
-        </p>
-
-        <h2>3. 広告について</h2>
-        <p>本アプリはGoogle
-            AdMob（Googleが提供する広告配信サービス）を利用して広告を表示しています。AdMobは広告配信の最適化のため、端末の広告識別子（IDFA/GAID）や利用状況などの情報を収集する場合があります。AdMobのプライバシーポリシーはGoogleのプライバシーポリシーに準じます。詳細は以下をご確認ください。<br>
-            <a href="https://policies.google.com/privacy" target="_blank"
-                rel="noopener">https://policies.google.com/privacy</a>
-        </p>
-
-        <h2>4. データの保存と管理</h2>
-        <p>本アプリに記録した釣果データ（写真・位置情報・魚種・日時など）はすべてお使いの端末のローカルストレージに保存されます。外部サーバーへの送信・バックアップは行われません。アプリを削除するとすべてのデータが消去されますので、ご注意ください。
-        </p>
-
-        <h2>5. 第三者への提供</h2>
-        <p>本アプリは、ユーザーの個人情報を第三者へ販売・提供・開示することはありません。ただし、上記「3. 広告について」に記載のとおり、AdMobによるデータ収集が行われる場合があります。</p>
-
-        <h2>6. 課金・購入</h2>
-        <p>本アプリにアプリ内課金・サブスクリプション等の有料要素はありません。完全無料でご利用いただけます。</p>
-
-        <h2>7. お子様のプライバシー</h2>
-        <p>本アプリは13歳未満のお子様を対象としたサービスではありません。13歳未満の方はご利用の際に保護者の同意を得てください。</p>
-
-        <h2>8. プライバシーポリシーの変更</h2>
-        <p>本ポリシーは必要に応じて更新されることがあります。重要な変更がある場合はアプリのアップデートにてお知らせします。最新のポリシーは常にアプリ内でご確認いただけます。</p>
-
-        <h2>9. お問い合わせ</h2>
-        <p>本ポリシーに関するご質問・ご意見、または不具合・ご要望については、以下のメールアドレスまでお問い合わせください。</p>
-
-        <p><a class="email"
-                href="mailto:support@jinan-app.com?subject=%E3%80%90%E9%87%A3%E3%82%8A%E3%83%AC%E3%82%B3%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&body=%E2%80%BB%20%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84.%0A%0A%E2%97%8F%20%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E7%A8%AE%E5%88%A5%EF%BC%88%E8%A9%B3%E7%B4%B0%E3%82%92%E8%A8%98%E5%85%A5%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%89%0A%E3%83%BB%E4%B8%8D%E5%85%B7%E5%90%88%E3%81%AE%E5%A0%B1%E5%91%8A%0A%E3%83%BB%E6%A9%9F%E8%83%BD%E3%81%AE%E3%81%94%E6%9C%9B%E6%9C%9B%0A%E3%83%BB%E3%81%9D%E3%81%AE%E4%BB%96%0A%0A%E2%97%8F%20%E5%86%85%E5%AE%B9%0A%0A(%E3%81%93%E3%81%A1%E3%82%89%E3%81%AB%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%82%92%E8%A8%98%E3%81%84%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84)%0A%0A%E2%97%8F%20%E3%81%94%E4%BD%BF%E7%94%A8%E7%92%B0%E5%A2%83%0A%E7%AB%AF%E6%9C%AB%3A%20%0AOS%3A%20iOS%20%0A%E3%82%A2%E3%83%97%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%3A%20">support@jinan-app.com</a>
-        </p>
-
-        <footer style="margin-top:32px;color:#666;font-size:13px">
-            <p>このページはアプリのプライバシーポリシーを公開するためのページです。</p>
-        </footer>
+    <!-- Language switcher -->
+    <div class="lang-switch">
+        <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+        <button id="btnJa" onclick="setLang('ja')">JA</button>
     </div>
+
+    <div class="container">
+
+        <!-- ===== English ===== -->
+        <div class="en-only">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: March 2, 2026</p>
+
+            <h2>1. Basic Policy</h2>
+            <p>Fishing Log TsuriReco (hereinafter "the App") respects users' privacy and strives to handle personal
+                information appropriately. The App does not require server-based user registration, and all fishing data
+                is stored solely on your device.</p>
+
+            <h2>2. Information We Collect</h2>
+            <h3>Photos &amp; Images</h3>
+            <p>When recording a catch, we ask for permission to access your photo library. Selected photos are stored
+                only on your device and are never transmitted externally.</p>
+
+            <h3>Location Information (EXIF Metadata)</h3>
+            <p>The App reads latitude and longitude from EXIF data embedded in photos to determine the shooting
+                location. The App does not perform continuous background GPS tracking. Location information obtained is
+                stored only on your device and is never transmitted externally.</p>
+
+            <h2>3. Advertisements</h2>
+            <p>The App displays advertisements using Google AdMob (an advertising service provided by Google). AdMob may
+                collect information such as device advertising identifiers (IDFA/GAID) and usage data for ad
+                optimization. AdMob's privacy policy is governed by Google's privacy policy. For details, please
+                see:<br>
+                <a href="https://policies.google.com/privacy" target="_blank"
+                    rel="noopener">https://policies.google.com/privacy</a>
+            </p>
+
+            <h2>4. Data Storage and Management</h2>
+            <p>All fishing data recorded in the App (photos, location information, fish species, dates, etc.) is stored
+                in the local storage of your device. No data is transmitted to or backed up on external servers. Please
+                note that deleting the App will erase all data.</p>
+
+            <h2>5. Disclosure to Third Parties</h2>
+            <p>The App does not sell, provide, or disclose users' personal information to third parties. However, data
+                collection by AdMob may occur as described in "3. Advertisements" above.</p>
+
+            <h2>6. In-App Purchases</h2>
+            <p>The App does not include any in-app purchases, subscriptions, or other paid features. It is completely
+                free to use.</p>
+
+            <h2>7. Children's Privacy</h2>
+            <p>The App is not intended for children under the age of 13. If you are under 13, please obtain parental
+                consent before using the App.</p>
+
+            <h2>8. Changes to This Privacy Policy</h2>
+            <p>This policy may be updated as necessary. If there are significant changes, we will notify you through an
+                app update. The latest policy can always be viewed within the App.</p>
+
+            <h2>9. Contact Us</h2>
+            <p>If you have any questions or comments about this policy, or if you wish to report a bug or request a
+                feature, please contact us at the email address below.</p>
+
+            <p><a class="email"
+                    href="mailto:support@jinan-app.com?subject=%5BTsuriReco%5D%20Inquiry&body=%E2%80%BB%20Please%20use%20the%20following%20template.%0A%0A%E2%97%8F%20Inquiry%20type%20(please%20provide%20details)%0A%E3%83%BBBug%20report%0A%E3%83%BBFeature%20request%0A%E3%83%BBOther%0A%0A%E2%97%8F%20Details%0A%0A(Please%20describe%20your%20inquiry%20here)%0A%0A%E2%97%8F%20Device%20info%0ADevice%3A%20%0AOS%3A%20iOS%20%0AApp%20version%3A%20">support@jinan-app.com</a>
+            </p>
+
+            <footer style="margin-top:32px;color:#666;font-size:13px">
+                <p>This page is published to disclose the app's privacy policy.</p>
+            </footer>
+        </div>
+
+        <!-- ===== Japanese ===== -->
+        <div class="ja-only">
+            <h1>プライバシーポリシー</h1>
+            <p>最終更新日: 2026年3月2日</p>
+
+            <h2>1. 基本方針</h2>
+            <p>釣果記録　釣りレコ（以下「本アプリ」）は、ユーザーのプライバシーを尊重し、個人情報の適切な取り扱いに努めます。本アプリはサーバーへのユーザー登録を必要とせず、釣果データはすべてお使いの端末内にのみ保存されます。
+            </p>
+
+            <h2>2. 取得する情報</h2>
+            <h3>■ 写真・画像</h3>
+            <p>釣果登録時に、フォトライブラリへのアクセス許可をお願いします。選択した写真は端末内にのみ保存され、外部へ送信されることはありません。</p>
+
+            <h3>■ 位置情報（EXIFメタデータ）</h3>
+            <p>写真に埋め込まれたEXIFデータから撮影場所の緯度・経度を読み取ります。なお、本アプリはGPSを常時取得するバックグラウンド位置情報取得は行いません。取得した位置情報は端末内にのみ保存され、外部へ送信されることはありません。
+            </p>
+
+            <h2>3. 広告について</h2>
+            <p>本アプリはGoogle
+                AdMob（Googleが提供する広告配信サービス）を利用して広告を表示しています。AdMobは広告配信の最適化のため、端末の広告識別子（IDFA/GAID）や利用状況などの情報を収集する場合があります。AdMobのプライバシーポリシーはGoogleのプライバシーポリシーに準じます。詳細は以下をご確認ください。<br>
+                <a href="https://policies.google.com/privacy" target="_blank"
+                    rel="noopener">https://policies.google.com/privacy</a>
+            </p>
+
+            <h2>4. データの保存と管理</h2>
+            <p>本アプリに記録した釣果データ（写真・位置情報・魚種・日時など）はすべてお使いの端末のローカルストレージに保存されます。外部サーバーへの送信・バックアップは行われません。アプリを削除するとすべてのデータが消去されますので、ご注意ください。
+            </p>
+
+            <h2>5. 第三者への提供</h2>
+            <p>本アプリは、ユーザーの個人情報を第三者へ販売・提供・開示することはありません。ただし、上記「3. 広告について」に記載のとおり、AdMobによるデータ収集が行われる場合があります。</p>
+
+            <h2>6. 課金・購入</h2>
+            <p>本アプリにアプリ内課金・サブスクリプション等の有料要素はありません。完全無料でご利用いただけます。</p>
+
+            <h2>7. お子様のプライバシー</h2>
+            <p>本アプリは13歳未満のお子様を対象としたサービスではありません。13歳未満の方はご利用の際に保護者の同意を得てください。</p>
+
+            <h2>8. プライバシーポリシーの変更</h2>
+            <p>本ポリシーは必要に応じて更新されることがあります。重要な変更がある場合はアプリのアップデートにてお知らせします。最新のポリシーは常にアプリ内でご確認いただけます。</p>
+
+            <h2>9. お問い合わせ</h2>
+            <p>本ポリシーに関するご質問・ご意見、または不具合・ご要望については、以下のメールアドレスまでお問い合わせください。</p>
+
+            <p><a class="email"
+                    href="mailto:support@jinan-app.com?subject=%E3%80%90%E9%87%A3%E3%82%8A%E3%83%AC%E3%82%B3%E3%80%91%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&body=%E2%80%BB%20%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84.%0A%0A%E2%97%8F%20%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E7%A8%AE%E5%88%A5%EF%BC%88%E8%A9%B3%E7%B4%B0%E3%82%92%E8%A8%98%E5%85%A5%E3%81%97%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%EF%BC%89%0A%E3%83%BB%E4%B8%8D%E5%85%B7%E5%90%88%E3%81%AE%E5%A0%B1%E5%91%8A%0A%E3%83%BB%E6%A9%9F%E8%83%BD%E3%81%AE%E3%81%94%E6%9C%9B%E6%9C%9B%0A%E3%83%BB%E3%81%9D%E3%81%AE%E4%BB%96%0A%0A%E2%97%8F%20%E5%86%85%E5%AE%B9%0A%0A(%E3%81%93%E3%81%A1%E3%82%89%E3%81%AB%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%82%92%E8%A8%98%E3%81%84%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84)%0A%0A%E2%97%8F%20%E3%81%94%E4%BD%BF%E7%94%A8%E7%92%B0%E5%A2%83%0A%E7%AB%AF%E6%9C%AB%3A%20%0AOS%3A%20iOS%20%0A%E3%82%A2%E3%83%97%E3%83%AA%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%3A%20">support@jinan-app.com</a>
+            </p>
+
+            <footer style="margin-top:32px;color:#666;font-size:13px">
+                <p>このページはアプリのプライバシーポリシーを公開するためのページです。</p>
+            </footer>
+        </div>
+
+    </div>
+
+    <script>
+        function setLang(lang) {
+            var html = document.documentElement;
+            if (lang === 'ja') {
+                html.classList.add('ja');
+                html.setAttribute('lang', 'ja');
+            } else {
+                html.classList.remove('ja');
+                html.setAttribute('lang', 'en');
+            }
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+            document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+            try { localStorage.setItem('lang', lang); } catch (e) { }
+        }
+        (function () {
+            var saved = null;
+            try { saved = localStorage.getItem('lang'); } catch (e) { }
+            if (saved === 'ja') setLang('ja');
+        })();
+    </script>
 </body>
 
 </html>
