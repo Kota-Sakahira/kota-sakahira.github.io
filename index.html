@@ -168,6 +168,14 @@
       flex-shrink: 0;
     }
 
+    .card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: inherit;
+    }
+
     .card-body {
       flex: 1;
     }
@@ -392,7 +400,9 @@
 
     <!-- TsuriReco -->
     <a class="card" href="./TsuriReco.html">
-      <div class="card-icon">🎣</div>
+      <div class="card-icon">
+        <img src="assets/tsurireco_icon.png" alt="TsuriReco icon">
+      </div>
       <div class="card-body">
         <p class="card-name">
           <span class="en-only">Fishing Log – TsuriReco</span>
