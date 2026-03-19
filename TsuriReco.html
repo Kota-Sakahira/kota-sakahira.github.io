@@ -5,36 +5,277 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Fishing Log TsuriReco - Privacy Policy</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #102033;
+            --muted: #5e7385;
+            --tide: #1f769a;
+            --tide-deep: #0e4966;
+            --accent: #e78a3d;
+            --surface: rgba(255, 255, 255, 0.82);
+            --surface-soft: rgba(245, 250, 252, 0.78);
+            --line: rgba(31, 118, 154, 0.14);
+            --shadow: 0 26px 80px rgba(16, 32, 51, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+            margin: 0;
+            font-family: 'DM Sans', "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
             line-height: 1.8;
-            color: #111;
-            background: #fff;
-            padding: 24px;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(121, 191, 220, 0.24), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(231, 138, 61, 0.14), transparent 32%),
+                linear-gradient(145deg, #f4fbfd 0%, #eef5f9 52%, #f8fbfd 100%);
+            min-height: 100vh;
+            padding: 32px 24px 48px;
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(18px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::before {
+            width: 20rem;
+            height: 20rem;
+            top: -7rem;
+            right: -5rem;
+            background: rgba(31, 118, 154, 0.1);
+        }
+
+        body::after {
+            width: 18rem;
+            height: 18rem;
+            bottom: 0;
+            left: -6rem;
+            background: rgba(231, 138, 61, 0.08);
+        }
+
+        a {
+            color: var(--tide-deep);
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        footer {
+            margin: 0;
         }
 
         h1,
         h2 {
-            color: #0b66a3
+            color: var(--tide-deep);
+        }
+
+        h1 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-family: 'Shippori Mincho', serif;
+            font-size: 1.28rem;
+            line-height: 1.45;
+            margin-top: 32px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+        }
+
+        h3 {
+            font-size: 0.98rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 0.98rem;
+            color: var(--muted);
+            margin-top: 10px;
         }
 
         pre {
-            white-space: pre-wrap
+            white-space: pre-wrap;
+        }
+
+        .page-shell {
+            position: relative;
+            z-index: 10;
+            width: min(980px, 100%);
+            margin: 0 auto;
+            padding-top: 48px;
+        }
+
+        .policy-nav {
+            position: fixed;
+            top: 18px;
+            left: 20px;
+            z-index: 110;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: 0 14px 34px rgba(16, 32, 51, 0.12);
+            backdrop-filter: blur(14px);
+            text-decoration: none;
+            color: var(--ink);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .back-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px rgba(16, 32, 51, 0.16);
+        }
+
+        .back-home .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(31, 118, 154, 0.1);
+            color: var(--tide-deep);
+            font-size: 1rem;
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 18px;
+            right: 20px;
+            z-index: 110;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 999px;
+            padding: 4px;
+            gap: 2px;
+            box-shadow: 0 12px 30px rgba(16, 32, 51, 0.12);
+            backdrop-filter: blur(14px);
+        }
+
+        .lang-switch button {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            background: transparent;
+            color: var(--muted);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            letter-spacing: 0.08em;
+        }
+
+        .lang-switch button.active {
+            background: var(--tide);
+            color: #fff;
+        }
+
+        .lang-switch button:hover {
+            transform: translateY(-1px);
         }
 
         .container {
-            max-width: 860px;
-            margin: 0 auto
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            border-radius: 30px;
+            padding: 36px 36px 30px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(31, 118, 154, 0.06), transparent 44%, rgba(231, 138, 61, 0.05));
+            pointer-events: none;
+        }
+
+        .container > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container > div > p:first-of-type {
+            font-size: 0.82rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--tide);
+            margin-top: 0;
         }
 
         a.email {
-            color: #0b66a3;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--tide-deep);
             text-decoration: none;
-            font-weight: 600
+            font-weight: 600;
+            padding: 12px 16px;
+            margin-top: 6px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.74);
+            border: 1px solid rgba(31, 118, 154, 0.12);
         }
 
-        /* ── i18n toggle ── */
+        footer {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: fadeUp 0.7s cubic-bezier(.22, 1, .36, 1) forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         html:not(.ja) .ja-only {
             display: none !important;
         }
@@ -43,50 +284,57 @@
             display: none !important;
         }
 
-        .lang-switch {
-            position: fixed;
-            top: 16px;
-            right: 20px;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border: 1px solid rgba(11, 102, 163, 0.2);
-            border-radius: 99px;
-            padding: 4px;
-            gap: 2px;
-            box-shadow: 0 2px 12px rgba(11, 102, 163, 0.10);
-        }
+        @media (max-width: 720px) {
+            body {
+                padding: 72px 12px 28px;
+            }
 
-        .lang-switch button {
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 5px 14px;
-            border: none;
-            border-radius: 99px;
-            cursor: pointer;
-            background: transparent;
-            color: #555;
-            transition: background 0.2s, color 0.2s;
-            letter-spacing: 0.04em;
-        }
+            .page-shell {
+                padding-top: 0;
+            }
 
-        .lang-switch button.active {
-            background: #0b66a3;
-            color: #fff;
+            .policy-nav {
+                top: 12px;
+                left: 12px;
+            }
+
+            .lang-switch {
+                top: 12px;
+                right: 12px;
+            }
+
+            .container {
+                padding: 26px 20px 24px;
+                border-radius: 24px;
+            }
+
+            h2 {
+                margin-top: 28px;
+                padding-top: 18px;
+            }
+
+            p {
+                font-size: 0.94rem;
+            }
         }
     </style>
 </head>
 
 <body>
+    <nav class="policy-nav">
+        <a class="back-home" href="./index.html" aria-label="Back to top page">
+            <span class="icon">⌂</span>
+        </a>
+    </nav>
+
     <!-- Language switcher -->
     <div class="lang-switch">
         <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
         <button id="btnJa" onclick="setLang('ja')">JA</button>
     </div>
 
-    <div class="container">
+    <div class="page-shell fade-up">
+        <div class="container">
 
         <!-- ===== English ===== -->
         <div class="en-only">
@@ -203,6 +451,7 @@
             </footer>
         </div>
 
+        </div>
     </div>
 
     <script>
